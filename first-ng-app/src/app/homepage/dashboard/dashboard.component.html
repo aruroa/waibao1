@@ -1,0 +1,11 @@
+<div (click)="viewDetail(post.id)"*ngFor="let post of postList">
+<p-panel header="{{post.title}}" [toggleable]="true" >
+  <ng-template pTemplate="icons">
+    <button pButton class="p-panel-header-icon p-link" (click)="menu.toggle($event)">
+      <span class="pi pi-cog"></span>
+    </button>
+    <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+  </ng-template>
+  {{post.content}}
+</p-panel>
+</div>

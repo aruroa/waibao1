@@ -1,0 +1,36 @@
+
+<div class="stepsdemo-content">
+  <div class="p-d-flex">
+    <div class="p-col-2"></div>
+    <div class="p-col-8">
+      <p-card>
+        <ng-template pTemplate="title">
+          投诉申请
+        </ng-template>
+        <ng-template pTemplate="subtitle">
+          填写投诉信息
+        </ng-template>
+        <ng-template pTemplate="content" [formGroup]="complain">
+          <div class="p-fluid">
+            <div class="field">
+              <label for="content">投诉内容</label>
+              <input  style="height: 100px" id="content" type="text" required pInputText formControlName="content">
+              <small *ngIf="f.content.dirty && f.content.errors" class="p-error">
+                <div *ngIf="f.content.errors.required">需要内容</div>
+              </small></div>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <div class="grid grid-nogutter justify-content-end">
+            <p-dialog header="目前投诉状态" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+                      [draggable]="false" [resizable]="false">
+              <p class="m-0">您的投诉等待受理中  <ng-template pTemplate="footer">
+                <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
+              </ng-template>
+            </p-dialog>
+            <p-button label="投诉" (onClick)="nextStep()" icon="pi pi-angle-right" iconPos="right"></p-button>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>  </div>

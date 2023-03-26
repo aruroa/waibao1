@@ -1,0 +1,49 @@
+
+<div class="stepsdemo-content">
+  <div class="p-d-flex">
+    <div class="p-col-2"></div>
+    <div class="p-col-8">
+  <p-card>
+    <ng-template pTemplate="title">
+      维修信息
+    </ng-template>
+    <ng-template pTemplate="subtitle">
+      您的报修已处理完成
+    </ng-template>
+    <ng-template pTemplate="content">
+      <div class="p-fluid formgrid grid">
+        <div class="field col-12">
+          <label >受理维修人员:</label>
+          {{fix.acceptId}}
+        </div>
+        <div class="field col-8">
+          <label id="number" >房间:</label>
+          {{fix.room}}
+        </div>
+        <div class="field col-2">
+          <label >报修内容:</label>
+          {{fix.content}}
+        </div>
+        <div class="field col-2">
+          <label >预定维修时间:</label>
+          {{fix.orderTime}}
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <h4>请确认，进一步等待出示本次维系报告</h4>
+      <div class="grid grid-nogutter justify-content-end">
+        <p-dialog header="目前报修状态" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+                  [draggable]="false" [resizable]="false">
+          <p class="m-0">等待维修人员填写报告  <ng-template pTemplate="footer">
+            <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
+          </ng-template>
+        </p-dialog>
+
+        <p-button label="确认" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>
+  </div>
+</div>

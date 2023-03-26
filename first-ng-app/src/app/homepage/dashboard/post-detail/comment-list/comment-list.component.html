@@ -1,0 +1,6 @@
+<div *ngFor="let comment of commentList">
+  <p-panel header="{{comment.userId}}" [toggleable]="true" >
+    {{comment.content}}
+    <li style="color: #aaaaaa">{{comment.commentTime}}</li>
+  </p-panel>
+</div>

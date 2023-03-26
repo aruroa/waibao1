@@ -1,0 +1,64 @@
+
+:host ::ng-deep .p-button {
+  margin: 0 .5rem 0 0;
+  min-width: 10rem;
+}
+
+p {
+  margin: 0;
+}
+
+.confirmation-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:host ::ng-deep .p-dialog .p-button {
+  min-width: 6rem;
+}
+
+.post{
+  position: absolute;
+  background: #ffffff;
+  border: 1px #999999 solid;
+  width: 500px;
+  left: 65px;
+  top:70px;
+  padding: 10px;
+  font-size: 14px;
+  z-index: 999999;
+  display: none;
+}
+.post .title{
+  width: 450px;
+  height:30px;
+  line-height: 30px;
+  display: block;
+  border: 1px #aaaaaa solid;
+  margin-bottom: 10px;
+}
+.post select{
+  width: 200px;
+  height: 30px;
+}
+.post .content{
+  width: 450px;
+  height: 200px;
+  display: block;
+  margin: 10px 0;
+  border: 1px #aaaaaa solid;
+}
+.post .btn {
+  width: 160px;
+  height: 35px;
+  color: #eb2711;
+  background: rgba(255, 23, 0, 0.1);
+  border: #eb2711 solid 1px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 8px;
+  cursor: pointer;
+}

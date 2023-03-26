@@ -1,0 +1,19 @@
+
+<p-carousel [value]="activities" styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+  <ng-template pTemplate="header">
+  </ng-template>
+  <ng-template let-activity pTemplate="item">
+    <div class="product-item">
+      <div class="product-item-content" (click)="viewDetail(activity.id)" >
+        <div class="mb-3">
+          <img src="../../../assets/photos/{{activity.photo}}" [alt]="activity.title" class="product-image" style="height:200px" />
+        </div>
+        <div>
+          <h4 class="mb-1">{{activity.title}}</h4>
+          <h6 class="mt-0 mb-3">{{activity.content}}</h6>
+        </div>
+      </div>
+      </div>
+
+  </ng-template>
+</p-carousel>

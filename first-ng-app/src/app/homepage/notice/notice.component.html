@@ -1,0 +1,13 @@
+<div class="p-grid p-jc-center">
+</div>
+<div *ngFor="let inform of informList">
+<p-dialog header="公告:{{inform.title}}" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+          [draggable]="false" [resizable]="false">
+  <p class="m-0">
+    {{inform.content}}
+  </p>
+  <ng-template pTemplate="footer">
+    <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
+  </ng-template>
+</p-dialog>
+</div>

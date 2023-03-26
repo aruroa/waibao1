@@ -1,0 +1,39 @@
+<div class="p-d-flex">
+  <div class="p-grid p-jc-center">
+    <div class="p-col-6"></div>
+    <div class="p-col-6">
+      <p-card header="编辑新通知"  class="p-jc-center" [style]="{width: '50vw'}"
+              [draggable]="false"  [formGroup]="inform">
+        <ng-template pTemplate="header">
+          <img alt="Card" src="../../../assets/photos/inform.jpg" style="height: 400px">
+        </ng-template>
+        <div style="margin-left: 100px;">
+          <h4 for="title" style="margin-left: 120px;">标题：</h4>
+          <input id="title"  style="margin-left: 100px;" type="text" pInputText formControlName="title">
+          <small *ngIf="f.title.dirty && f.title.errors" class="p-error">
+            <div *ngIf="f.title.errors.required">需要标题</div>
+          </small>
+          <h4 for="content" style="margin-left: 120px;">内容：</h4>
+          <textarea id="content" rows="5" cols="150" id="content" placeholder="content" style="margin-left: 100px;font-size:18px;width: 400px;height: 200px" pInputTextarea  formControlName="content"></textarea>
+          <small *ngIf="f.content.dirty && f.content.errors" class="p-error">
+            <div *ngIf="f.content.errors.required">需要内容</div>
+          </small>
+          <h4 for="fromTime" style="margin-left: 120px;">起始时间：</h4>
+          <p-calendar id="fromTime"  style="margin-left: 120px;" [showTime]="true" [showSeconds]="true" inputId="time"  formControlName="fromTime"></p-calendar>
+          <small *ngIf="f.fromTime.dirty && f.fromTime.errors" class="p-error">
+          <div *ngIf="f.fromTime.errors.required">需要起始时间</div>
+          </small>
+          <h4 for="toTime" style="margin-left: 120px;">结束时间：</h4>
+          <p-calendar for="toTime"  style="margin-left: 120px;" [showTime]="true" [showSeconds]="true" inputId="time" formControlName="toTime"></p-calendar>
+          <small *ngIf="f.toTime.dirty && f.toTime.errors" class="p-error">
+            <div *ngIf="f.toTime.errors.required">需要结束时间</div>
+          </small>
+        </div>
+
+
+        <p-button  icon="pi pi-check"  (click)="addInform()" label="发送" style="margin-left: 400px;"></p-button>
+
+      </p-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<p-messages [value]="msgs" [closable]="false"></p-messages>
+<p-confirmPopup></p-confirmPopup>
+<h1>满意度评价列表</h1>
+<h2>2023年第{{term}}季度</h2>
+
+<p-table [value]="satifies">
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="code" class="p-col-1">编号
+        <p-sortIcon field="code"></p-sortIcon>
+      </th>
+      <th pSortableColumn="name" class="p-col-1">用户ID
+        <p-sortIcon field="name"></p-sortIcon>
+      </th>
+      <th pSortableColumn="category" class="p-col-1">手机号
+        <p-sortIcon field="category"></p-sortIcon>
+      </th>
+      <th pSortableColumn="quantity" class="p-col-1">房间号
+        <p-sortIcon field="quantity"></p-sortIcon>
+      </th>
+      <th pSortableColumn="price" class="p-col-1">服务打分
+        <p-sortIcon field="price"></p-sortIcon>
+      </th>
+      <th pSortableColumn="price" class="p-col-1">清洁打分
+        <p-sortIcon field="price"></p-sortIcon>
+      </th>
+      <th pSortableColumn="price" class="p-col-1">安保打分
+        <p-sortIcon field="price"></p-sortIcon>
+      </th>
+      <th pSortableColumn="price" class="p-col-1">维修打分
+      <p-sortIcon field="price"></p-sortIcon>
+    </th>
+      <th pSortableColumn="price" class="p-col-1">投诉打分
+      <p-sortIcon field="price"></p-sortIcon>
+    </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-satify>
+    <tr>
+      <td>{{satify.id}}</td>
+      <td>{{satify.userId}}</td>
+      <td>{{satify.phoneNum}}</td>
+      <td>{{satify.room}}</td>
+      <td>{{satify.question1}}/5</td>
+      <td>{{satify.question2}}/5</td>
+      <td>{{satify.question3}}/5</td>
+      <td>{{satify.question4}}/5</td>
+      <td>{{satify.question5}}/5</td>
+    </tr>
+  </ng-template>
+</p-table>
+

@@ -1,0 +1,9 @@
+<p-card header="评论"   [style]="{width: '50vw'}"
+        [draggable]="false"  [formGroup]="commentForm">
+
+<textarea rows="5" cols="150" id="content" placeholder="content" style="margin-left: 100px;font-size:18px;width: 80%;height: 200px" pInputTextarea  formControlName="content"></textarea>
+<small *ngIf="f.content.dirty && f.content.errors" class="p-error">
+  <div *ngIf="f.content.errors.required">评论不为空</div>
+</small>
+  <p-button  icon="pi pi-check"  (click)="addComment()" label="申请" style="margin-left: 800px;"></p-button>
+</p-card>

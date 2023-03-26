@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.course.mapper.ActivityMapper">
+    <sql id="Base_Column_List">
+        id, username, "password", "name", gender, is_admin, birthday, phone_num, home_address
+    </sql>
+    <sql id="insertActivityFields">
+      title, content, photo, from_time, to_time
+    </sql>
+  <resultMap id="All_Activities" type="com.neusoft.course.mapper.dao.ActivityModel">
+    <id column="id" jdbcType="BIGINT" property="id"/>
+    <result column="title" jdbcType="VARCHAR" property="title"/>
+    <result column="content" jdbcType="VARCHAR" property="content"/>
+    <result column="photo" jdbcType="VARCHAR" property="photo"/>
+    <result column="from_time" jdbcType="TIMESTAMP" property="fromTime"/>
+    <result column="to_time" jdbcType="TIMESTAMP" property="toTime"/>
+    </resultMap>
+    <insert id="insertActivityApply" parameterType="com.neusoft.course.mapper.dao.ActivityModel">
+        insert into user_access.activity(<include refid="insertActivityFields"></include>)
+        values(#{title},#{content},#{photo},#{fromTime},#{toTime})
+    </insert>
+    <select id="selectAllActivities" resultMap="All_Activities">
+        select
+        *
+        from user_access.activity
+    </select>
+    <select id="selectActivity" resultMap="All_Activities">
+        select
+            *
+        from user_access.activity
+        where id = #{activityId}
+    </select>
+</mapper>

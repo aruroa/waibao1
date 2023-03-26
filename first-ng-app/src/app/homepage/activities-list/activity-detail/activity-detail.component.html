@@ -1,0 +1,45 @@
+<div class="p-d-flex p-jc-center">
+  <div class="p-col-8" style=" border:1px solid darkgray ;border-radius :25px;">
+    <p-scrollPanel [style]="{width: '100%'}" >
+      <div class="p-col-3" >
+        <h2>
+          {{activity.title}}
+        </h2>
+        <h4>
+          {{activity.content}}
+        </h4>
+        <h4>
+          {{activity.fromTime}}——{{activity.toTime}}
+        </h4>
+      </div>
+      <hr>
+      <!--  <p-divider layout="vertical"  style="color: #eb2711"></p-divider>-->
+      <div class="p-col-8  p-jc-center" >
+        <p-scrollPanel [style]="{width: '150%'}" styleClass="custombar1">
+          <p style="text-align: center">
+            <img src="../../../../assets/photos/{{activity.photo}}" [alt]="activity.title"style="height:1000px" class="product-image"/>
+          </p>
+        </p-scrollPanel>
+        <!--    <p-divider layout="vertical" style="color: #eb2711" ></p-divider>-->
+
+      </div>  </p-scrollPanel>  <hr>
+    <!--  活动申请-->
+    <p-card header="编辑新帖子"   [style]="{width: '50vw'}"
+              [draggable]="false"  [formGroup]="appointment">
+      <h4 for="room" style="margin-left: 120px;">门牌号：</h4>
+      <input id="room"  style="margin-left: 100px;" type="text" pInputText formControlName="room">
+      <small *ngIf="f.room.dirty && f.room.errors" class="p-error">
+        <div *ngIf="f.room.errors.required">需要门牌号</div>
+      </small>
+      <h4 for="phoneNum" style="margin-left: 120px;">联系方式：</h4>
+      <input id="phoneNum"  style="margin-left: 100px;" type="text" pInputText formControlName="phoneNum">
+      <small *ngIf="f.phoneNum.dirty && f.phoneNum.errors" class="p-error">
+        <div *ngIf="f.phoneNum.errors.required">需要联系方式</div>
+      </small>
+        <p-button  icon="pi pi-check"  (click)="addAppointment()" label="申请" style="margin-left: 200px;"></p-button>
+    </p-card>
+
+
+  </div>
+
+</div>

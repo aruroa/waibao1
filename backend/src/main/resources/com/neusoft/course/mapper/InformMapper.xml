@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.course.mapper.InformMapper">
+    <sql id="Base_Column_List">
+        id, username, "password", "name", gender, is_admin, birthday, phone_num, home_address
+    </sql>
+    <sql id="insertInformFields">
+      title, content,from_time, to_time
+    </sql>
+  <resultMap id="Right_Inform" type="com.neusoft.course.mapper.dao.InformModel">
+    <id column="id" jdbcType="BIGINT" property="id"/>
+    <result column="title" jdbcType="VARCHAR" property="title"/>
+    <result column="content" jdbcType="VARCHAR" property="content"/>
+    <result column="from_time" jdbcType="TIMESTAMP" property="fromTime"/>
+    <result column="to_time" jdbcType="TIMESTAMP" property="toTime"/>
+    </resultMap>
+    <insert id="insertInform" parameterType="com.neusoft.course.mapper.dao.InformModel">
+        insert into user_access.inform(<include refid="insertInformFields"></include>)
+        values(#{title},#{content},#{fromTime},#{toTime})
+    </insert>
+    <select id="selectInform" resultMap="Right_Inform">
+        select
+        *
+        from user_access.inform
+--         where to_time>current_timestamp
+--         and form_time>current_timestamp
+    </select>
+
+</mapper>

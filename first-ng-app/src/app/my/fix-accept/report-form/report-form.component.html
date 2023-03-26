@@ -1,0 +1,19 @@
+<div class="p-d-flex">
+  <div class="p-col-3">
+    <div class="p-grid ">
+      <p-button (click)="showModalDialog()" icon="pi pi-plus" label="报告" ></p-button>
+      <p-dialog header="填写报告" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+                [draggable]="false" [resizable]="false" [formGroup]="fix">
+
+        <h4 for="report"style="margin-left: 120px;">报告内容：</h4>
+        <textarea rows="5" cols="150" id="report" placeholder="report" style="margin-left: 100px;font-size:18px;width: 400px;height: 200px" pInputTextarea  formControlName="report"></textarea>
+        <small *ngIf="f.report.dirty && f.report.errors" class="p-error">
+          <div *ngIf="f.report.errors.required">需要内容</div>
+        </small>
+        <ng-template pTemplate="footer">
+          <p-button icon="pi pi-check" (click)="addFixReport()" label="发送" styleClass="p-button-text"></p-button>
+        </ng-template>
+      </p-dialog>
+    </div>
+  </div>
+</div>

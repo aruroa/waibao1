@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.course.mapper.FixMapper">
+    <sql id="Base_Column_List">
+        id, username, "password", "name", gender, is_admin, birthday, phone_num, home_address
+    </sql>
+    <sql id="insertFixFields">
+        user_id, accept_id, order_time, room, content, state, report
+    </sql>
+    <resultMap id="All_Fix" type="com.neusoft.course.mapper.dao.FixModel">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="accept_id" jdbcType="BIGINT" property="acceptId"/>
+        <result column="order_time" jdbcType="TIMESTAMP" property="orderTime"/>
+        <result column="room" jdbcType="VARCHAR" property="room"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="state" jdbcType="BIGINT" property="state"/>
+      <result column="report" jdbcType="VARCHAR" property="report"/>
+    </resultMap>
+    <insert id="insertFix" parameterType="com.neusoft.course.mapper.dao.FixModel">
+        insert into user_access.fix(<include refid="insertFixFields"></include>)
+        values(#{userId},0,current_timestamp,#{room},#{content},0,null)
+    </insert>
+    <select id="selectFix" resultMap="All_Fix">
+        select
+        *
+        from user_access.fix
+        where state= #{state,jdbcType=BIGINT} and (accept_id = #{userId,jdbcType=BIGINT} or accept_id =0);
+    </select>
+   <select id="count" resultType="java.lang.Integer">
+    select count(*)
+    from user_access.fix
+    where state= #{state,jdbcType=BIGINT} and (accept_id = #{userId,jdbcType=BIGINT} or accept_id =0);
+   </select>
+  <select id="countUser" resultType="java.lang.Integer">
+    select count(*)
+    from user_access.fix
+    where user_id = #{userId,jdbcType=BIGINT} ;
+  </select>
+  <select id="selectFixDetail" resultMap="All_Fix">
+    select
+      *
+    from user_access.fix
+    where user_id= #{userId,jdbcType=BIGINT} ;
+  </select>
+  <update id="updateStateAccept" parameterType="com.neusoft.course.mapper.dao.FixModel">
+    update user_access."fix"
+    set accept_id  = #{acceptId,jdbcType=BIGINT},state=1,order_time=#{orderTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateStateDone" parameterType="com.neusoft.course.mapper.dao.FixModel">
+    update user_access."fix"
+    set state     = 2
+        where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateStateConfirm" parameterType="com.neusoft.course.mapper.dao.FixModel">
+    update user_access."fix"
+    set state     = 3
+        where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateStateReport" parameterType="com.neusoft.course.mapper.dao.FixModel">
+    update user_access."fix"
+    set state =4,report=#{report,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateStateEnd" parameterType="com.neusoft.course.mapper.dao.FixModel">
+    update user_access."fix"
+    set state  = 5
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateStateReadd" parameterType="com.neusoft.course.mapper.dao.FixModel">
+    update user_access."fix"
+    set accept_id = 0,state  = 0,order_time=NULL,report=NULL
+        where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="getState" resultType="int">
+    select state
+    from user_access.fix
+    where user_id= #{userId,jdbcType=BIGINT} ;
+  </select>
+</mapper>

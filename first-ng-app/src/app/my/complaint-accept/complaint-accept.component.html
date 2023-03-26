@@ -1,0 +1,118 @@
+
+
+<p-confirmPopup></p-confirmPopup>
+<h1>投诉列表</h1>
+<p-messages [value]="msgs1" [closable]="false"></p-messages>
+<h2>未受理投诉</h2>
+<p-table [value]="complains0">
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="code" class="p-col-1">编号
+        <p-sortIcon field="code"></p-sortIcon>
+      </th>
+      <th pSortableColumn="name" class="p-col-1">用户ID
+        <p-sortIcon field="name"></p-sortIcon>
+      </th>
+      <th pSortableColumn="category" class="p-col-8">投诉内容
+        <p-sortIcon field="category"></p-sortIcon>
+      </th>
+      <th pSortableColumn="quantity" class="p-col-1">处理
+        <p-sortIcon field="quantity"></p-sortIcon>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-complain>
+    <tr>
+      <td>{{complain.id}}</td>
+      <td>{{complain.userId}}</td>
+      <td>{{complain.content}}</td>
+      <td>
+      <button pButton type="button" class="mr-1" (click)="accept(complain.id,$event)">
+        受理
+      </button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+<p-messages [value]="msgs2" [closable]="false"></p-messages>
+<h2>未完成投诉</h2>
+<p-table [value]="complains1">
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="code" class="p-col-1">编号
+        <p-sortIcon field="code"></p-sortIcon>
+      </th>
+      <th pSortableColumn="name" class="p-col-1">用户ID
+        <p-sortIcon field="name"></p-sortIcon>
+      </th>
+      <th pSortableColumn="category" class="p-col-8">投诉内容
+        <p-sortIcon field="category"></p-sortIcon>
+      </th>
+      <th pSortableColumn="quantity" class="p-col-1">处理
+        <p-sortIcon field="quantity"></p-sortIcon>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-complain>
+    <tr>
+      <td>{{complain.id}}</td>
+      <td>{{complain.userId}}</td>
+      <td>{{complain.content}}</td>
+      <td>
+        <button pButton type="button" class="mr-1" (click)="done(complain.id,$event)">
+          完成
+        </button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+<p-messages [value]="msgs3" [closable]="false"></p-messages>
+<h2>待确认投诉</h2>
+<p-table [value]="complains2">
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="code" class="p-col-1">编号
+        <p-sortIcon field="code"></p-sortIcon>
+      </th>
+      <th pSortableColumn="name" class="p-col-1">用户ID
+        <p-sortIcon field="name"></p-sortIcon>
+      </th>
+      <th pSortableColumn="category" class="p-col-8">投诉内容
+        <p-sortIcon field="category"></p-sortIcon>
+      </th>
+
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-complain>
+    <tr>
+      <td>{{complain.id}}</td>
+      <td>{{complain.userId}}</td>
+      <td>{{complain.content}}</td>
+    </tr>
+  </ng-template>
+</p-table>
+<p-messages [value]="msgs4" [closable]="false"></p-messages>
+<h2>已完成投诉</h2>
+<p-table [value]="complains3">
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="code" class="p-col-1">编号
+        <p-sortIcon field="code"></p-sortIcon>
+      </th>
+      <th pSortableColumn="name" class="p-col-1">用户ID
+        <p-sortIcon field="name"></p-sortIcon>
+      </th>
+      <th pSortableColumn="category" class="p-col-8">投诉内容
+        <p-sortIcon field="category"></p-sortIcon>
+      </th>
+
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-complain>
+    <tr>
+      <td>{{complain.id}}</td>
+      <td>{{complain.userId}}</td>
+      <td>{{complain.content}}</td>
+    </tr>
+  </ng-template>
+</p-table>

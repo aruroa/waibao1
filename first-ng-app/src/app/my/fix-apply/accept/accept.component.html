@@ -1,0 +1,40 @@
+
+<div class="stepsdemo-content">
+  <div class="p-d-flex">
+    <div class="p-col-2"></div>
+    <div class="p-col-8">
+  <p-card>
+    <ng-template pTemplate="title">
+      受理信息
+    </ng-template>
+    <ng-template pTemplate="subtitle">
+      你您的报修申请已被受理
+    </ng-template>
+    <ng-template pTemplate="content">
+      <div class="p-fluid formgrid grid">
+        <div class="field col-12">
+          <label >受理维修人员:</label>
+          {{fix.acceptId}}
+        </div>
+        <div class="field col-8">
+          <label id="number" >房间:</label>
+          {{fix.room}}
+        </div>
+        <div class="field col-2">
+          <label >报修内容:</label>
+          {{fix.content}}
+        </div>
+        <div class="field col-2">
+          <label >预定维修时间:</label>
+          {{fix.orderTime}}
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="grid grid-nogutter justify-content-end">
+      </div>
+    </ng-template>
+  </p-card>
+</div>
+  </div>
+</div>

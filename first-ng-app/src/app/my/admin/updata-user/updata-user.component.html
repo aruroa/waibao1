@@ -1,0 +1,125 @@
+<!-- main app container -->
+<p-card header="更新用户">
+  <div class="card-body">
+    <form [formGroup]="updataForm" (ngSubmit)="onSubmit(updataForm)">
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col-12 p-md-5">
+          <label for="username" (click)="onClick(f.username)">用户名</label>
+          <input
+            id="username"
+            type="text"
+            [value]="f.username.value"
+            formControlName="username"
+            pInputText
+          >
+          <small *ngIf="f.username.dirty && f.username.errors" class="p-error">
+            <div *ngIf="f.username.errors.required">
+              需要用户名
+            </div>
+          </small>
+        </div>
+        <div class="p-field p-col-12 p-md-5">
+          <label>姓名</label>
+          <input
+            id="name"
+            type="text"
+            [value]="f.name.value"
+            formControlName="name"
+            pInputText
+          />
+          <small *ngIf="f.name.dirty && f.name.errors" class="p-error">
+            <div *ngIf="f.name.errors.required">需要姓名</div>
+          </small>
+        </div>
+        <div class="p-field p-col-12 p-md-2">
+          <label>性别</label>
+          <p-dropdown [options]="genderOpts"
+                      optionLabel="label"
+                      optionValue="value"
+                      id="gender"
+                      formControlName="gender"
+                      [filterValue]="f.gender.value"
+          ></p-dropdown>
+          <small *ngIf="f.gender.dirty && f.gender.errors" class="p-error">
+            <div *ngIf="f.gender.errors.required">需要性别</div>
+          </small>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+          <label>手机号</label>
+          <p-inputMask
+            mask="999-9999-9999"
+            [unmask]="true"
+            formControlName="phoneNum">
+          </p-inputMask>
+          <small *ngIf="f.phoneNum.dirty && f.phoneNum.errors" class="p-error">
+            <div *ngIf="f.phoneNum.errors.required">需要手机号</div>
+          </small>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+          <label>生日</label>
+          <p-calendar formControlName="birthday">
+          <small *ngIf="f.birthday.dirty && f.birthday.errors" class="p-error">
+            <div *ngIf="f.birthday.errors.required">需要生日</div>
+          </small>
+          </p-calendar>
+        </div>
+        <div class="p-field p-col-12">
+          <label>家庭地址</label>
+          <input
+            id="homeAddress"
+            type="text"
+            pInputText
+            [value]="f.homeAddress.value"
+            formControlName="homeAddress"
+          />
+          <small *ngIf="f.homeAddress.dirty && f.homeAddress.errors" class="p-error">
+            <div *ngIf="f.homeAddress.errors.required">需要家庭地址</div>
+          </small>
+        </div>
+        <br>
+        <button pButton class="p-button-secondary" (click)="onChange()" *ngIf="!hidebutton">更改密码</button>
+        <div class="p-field p-col-12 p-md-6" *ngIf="passchange">
+          <label>密码</label>
+          <input
+            id="password"
+            type="password"
+            [value]="f.password.value"
+            pInputText
+          />
+          <small *ngIf="f.password.dirty && f.password.errors" class="p-error">
+            <div *ngIf="f.password.errors.required">
+              需要密码
+            </div>
+            <div *ngIf="f.password.errors.minlength">
+              密码最少需要六位
+            </div>
+          </small>
+        </div>
+        <div class="p-field p-col-12 p-md-6" *ngIf="passchange">
+          <label>确认密码</label>
+          <input
+            type="password"
+            pInputText
+          />
+          <small
+            *ngIf="f.confirmPassword.dirty && f.confirmPassword.errors"
+            class="p-error"
+          >
+            <div *ngIf="f.confirmPassword.errors.required">
+              确认密码需要填写
+            </div>
+            <div *ngIf="f.confirmPassword.errors.mustMatch">
+              密码必须匹配
+            </div>
+          </small>
+        </div>
+      </div>
+      <br>
+      <div class="p-d-flex p-jc-center">
+        <button pButton type="submit" class="p-mr-2" label="更新"></button>
+        <button pButton type="reset" class="p-button-secondary" (click)="onReset()" label="重置"></button>
+        <button pButton type="button" class="p-button-warning" (click)="cancel()" label="取消"></button>
+      </div>
+    </form>
+  </div>
+</p-card>

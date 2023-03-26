@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.course.mapper.SatifyMapper">
+    <sql id="Base_Column_List">
+        id, username, "password", "name", gender, is_admin, birthday, phone_num, home_address
+    </sql>
+    <sql id="insertSatifyFields">
+        user_id, room, phone_num,question1,question2,question3,question4,question5,term
+    </sql>
+    <resultMap id="All_Satify" type="com.neusoft.course.mapper.dao.SatifyModel">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+       <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="room" jdbcType="VARCHAR" property="room"/>
+        <result column="phone_num" jdbcType="VARCHAR" property="phoneNum"/>
+      <result column="question1" jdbcType="BIGINT" property="question1"/>
+      <result column="question2" jdbcType="BIGINT" property="question2"/>
+      <result column="question3" jdbcType="BIGINT" property="question3"/>
+      <result column="question4" jdbcType="BIGINT" property="question4"/>
+      <result column="question5" jdbcType="BIGINT" property="question5"/>
+      <result column="term" jdbcType="BIGINT" property="term"/>
+    </resultMap>
+    <insert id="insertSatify" parameterType="com.neusoft.course.mapper.dao.SatifyModel">
+        insert into user_access.satify(<include refid="insertSatifyFields"></include>)
+        values(#{userId},#{room},#{phoneNum},#{question1},#{question2},#{question3},#{question4},#{question5},#{term})
+    </insert>
+    <select id="selectAllSatify" resultMap="All_Satify">
+        select
+        *
+        from user_access.satify
+        where term = #{term,jdbcType=BIGINT}
+    </select>
+   <select id="count" resultType="java.lang.Integer">
+    select count(*)
+    from user_access.satify
+    where term = #{term,jdbcType=BIGINT};
+   </select>
+</mapper>

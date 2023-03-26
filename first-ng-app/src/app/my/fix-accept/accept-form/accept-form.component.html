@@ -1,0 +1,18 @@
+<div class="p-d-flex">
+  <div class="p-col-3">
+    <div class="p-grid ">
+      <p-button (click)="showModalDialog()" icon="pi pi-plus" label="受理" ></p-button>
+      <p-dialog header="填写受理信息" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+                [draggable]="false" [resizable]="false" [formGroup]="fix" >
+        <h4 for="orderTime" style="margin-left: 120px;margin-top: 200px;">约定时间：</h4>
+        <p-calendar id="orderTime"  style="margin-left: 120px;" [showTime]="true" [showSeconds]="true" inputId="time"  formControlName="orderTime"></p-calendar>
+        <small *ngIf="f.orderTime.dirty && f.orderTime.errors" class="p-error">
+          <div *ngIf="f.orderTime.errors.required">需要约定时间</div>
+        </small>
+        <ng-template pTemplate="footer">
+          <p-button icon="pi pi-check" (click)="addFixAccept()" label="受理" styleClass="p-button-text"></p-button>
+        </ng-template>
+      </p-dialog>
+    </div>
+  </div>
+</div>

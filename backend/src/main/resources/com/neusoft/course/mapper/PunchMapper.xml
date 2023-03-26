@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.course.mapper.PunchMapper">
+    <sql id="Base_Column_List">
+        id, username, "password", "name", gender, is_admin, birthday, phone_num, home_address
+    </sql>
+    <sql id="insertPunchFields">
+        user_id, date, building1,building2,building3,building4,building5,lobby
+    </sql>
+    <resultMap id="All_Punch" type="com.neusoft.course.mapper.dao.PunchModel">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+      <result column="accept_id" jdbcType="BIGINT" property="userId"/>
+       <result column="date" jdbcType="DATE" property="date"/>
+      <result column="building1" jdbcType="BIGINT" property="building1"/>
+      <result column="building2" jdbcType="BIGINT" property="building2"/>
+      <result column="building3" jdbcType="BIGINT" property="building3"/>
+      <result column="building4" jdbcType="BIGINT" property="building4"/>
+      <result column="building5" jdbcType="BIGINT" property="building5"/>
+      <result column="lobby" jdbcType="BIGINT" property="lobby"/>
+    </resultMap>
+    <insert id="insertPunch" parameterType="com.neusoft.course.mapper.dao.PunchModel">
+        insert into user_access.punch(<include refid="insertPunchFields"></include>)
+        values(#{userId},#{tDT},0,0,0,0,0,0)
+    </insert>
+
+  <update id="updatePunchUp">
+    update user_access."punch"
+    <set>
+    #{building,jdbcType=VARCHAR}=1,
+    </set>
+    where date= #{tDT,jdbcType=DATE} and user_id = #{userId,jdbcType=BIGINT}
+  </update>
+
+  <select id="countPunch" resultType="java.lang.Integer">
+    select count(*)
+    from user_access.punch
+    where date= #{tDT,jdbcType=DATE} and user_id = #{userId,jdbcType=BIGINT} ;
+  </select>
+
+  <select id="getPunch" resultType="com.neusoft.course.mapper.dao.PunchModel">
+    select
+      *
+    from user_access.punch
+    where date= #{tDT,jdbcType=DATE} and user_id = #{userId,jdbcType=BIGINT} ;
+  </select>
+</mapper>

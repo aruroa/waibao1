@@ -1,0 +1,32 @@
+
+<div class="stepsdemo-content">
+  <div class="p-d-flex">
+    <div class="p-col-2"></div>
+    <div class="p-col-8">
+      <p-card>
+        <ng-template pTemplate="title">
+          投诉信息
+        </ng-template>
+        <ng-template pTemplate="subtitle">
+          你您的投诉已被受理
+        </ng-template>
+        <ng-template pTemplate="content">
+          <div class="p-fluid formgrid grid">
+            <div class="field col-12">
+              <label >受理服务人员:</label>
+              {{complain.acceptId}}
+            </div>
+            <div class="field col-2">
+              <label >投诉内容:</label>
+              {{complain.content}}
+            </div>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <div class="grid grid-nogutter justify-content-end">
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+</div>

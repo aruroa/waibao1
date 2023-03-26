@@ -1,0 +1,39 @@
+<p-messages [value]="msgs" [closable]="false"></p-messages>
+<p-confirmPopup></p-confirmPopup>
+<h1>活动申请列表</h1>
+
+<p-table [value]="appointments">
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="code" class="p-col-2">编号
+        <p-sortIcon field="code"></p-sortIcon>
+      </th>
+      <th pSortableColumn="name" class="p-col-2">用户ID
+        <p-sortIcon field="name"></p-sortIcon>
+      </th>
+      <th pSortableColumn="price" class="p-col-2">活动ID
+        <p-sortIcon field="price"></p-sortIcon>
+      </th>
+<!--      <th pSortableColumn="price" class="p-col-2">活动名称-->
+<!--      <p-sortIcon field="price"></p-sortIcon>-->
+<!--    </th>-->
+      <th pSortableColumn="category" class="p-col-2">手机号
+        <p-sortIcon field="category"></p-sortIcon>
+      </th>
+      <th pSortableColumn="quantity" class="p-col-2">房间号
+        <p-sortIcon field="quantity"></p-sortIcon>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-appointment>
+    <tr>
+      <td>{{appointment.id}}</td>
+      <td>{{appointment.userId}}</td>
+      <td>{{appointment.activityId}}</td>
+<!--      <td>{{appointment.activityName}}</td>-->
+      <td>{{appointment.phoneNum}}</td>
+      <td>{{appointment.room}}</td>
+    </tr>
+  </ng-template>
+</p-table>
+

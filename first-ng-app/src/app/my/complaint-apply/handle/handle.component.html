@@ -1,0 +1,36 @@
+
+<div class="stepsdemo-content">
+  <div class="p-d-flex">
+    <div class="p-col-2"></div>
+    <div class="p-col-8">
+      <p-card>
+        <ng-template pTemplate="title">
+          投诉信息
+        </ng-template>
+        <ng-template pTemplate="subtitle">
+          您的投诉已处理完成
+        </ng-template>
+        <ng-template pTemplate="content">
+          <div class="p-fluid formgrid grid">
+            <div class="field col-12">
+              <label >社区服务人员:</label>
+              {{complain.acceptId}}
+            </div>
+            <div class="field col-2">
+              <label >报修内容:</label>
+              {{complain.content}}
+            </div>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <h4>若确认本次事件解决，请点击确认投诉</h4>
+          <div class="grid grid-nogutter justify-content-end">
+            <p-button label="确认" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+            <h4>若对本次处理不满，可以重新投诉该问题</h4>
+            <p-button label="重新投诉" (onClick)="readd()" icon="pi pi-angle-left"></p-button>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="p-d-flex">
+  <div class="p-col-2">
+    <p-scrollPanel [style]="{width: '30%'}">
+      <p>
+        {{post.title}}
+      </p>
+    </p-scrollPanel>
+  </div>
+  <p-divider layout="vertical" ></p-divider>
+  <div class="p-col-5">
+    <p-scrollPanel [style]="{width: '150%'}" styleClass="custombar1">
+      <p>
+        {{post.content}}
+      </p>
+    </p-scrollPanel>
+    <p-divider layout="vertical" ></p-divider>
+  </div>
+</div>
+<p-divider></p-divider>
